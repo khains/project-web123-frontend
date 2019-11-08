@@ -7,7 +7,7 @@ import axios from "../axios";
 
 export default class DetailScreen extends Component {
     state = {
-     
+        
     };
 
     componentDidMount() {
@@ -23,29 +23,17 @@ export default class DetailScreen extends Component {
     onDetail = (event) => {
         event.preventDefault();
         
-        localStorage.setItem("name", this.state.mer.name);
-        localStorage.setItem("image", this.state.mer.image);
-        localStorage.setItem("size", document.getElementById("size").value);
-        localStorage.setItem("quantity", document.getElementById("quantity").value);
-        localStorage.setItem("price", this.state.mer.price);
-        localStorage.setItem("subtotal", (document.getElementById("quantity").value)*(this.state.mer.price));
+        let item = {
+            name : this.state.mer.name,
+            image : this.state.mer.image,
+            size : document.getElementById("size").value,
+            quantity : document.getElementById("quantity").value,
+            price : this.state.mer.price,
+            subTotal : (document.getElementById("quantity").value * this.state.mer.price)
+        }
         
-        // axios
-        // .post("https://unterwasche-api.herokuapp.com/api/cart/", {
-        //     id: this.state.mer.id,
-        //     name: this.state.mer.name,
-        //     image: this.state.mer.image,
-        //     quantity: document.getElementById("quantity").value,
-        //     price: this.state.mer.price,
-        //     size: document.getElementById("size").value,
-        //     subtotal: (document.getElementById("quantity").value)*(this.state.mer.price)
-            
-        // })
-        // .then(() => {
-        //     this.props.history.push("/cart")
-        // }).catch(() => {
+        sessionStorage.setItem("items", JSON.stringify(item));
 
-        // })
         this.props.history.push("/cart")
     }
 

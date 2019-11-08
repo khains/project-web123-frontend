@@ -84,7 +84,7 @@ export class App extends Component {
             <Route path="/login"
               render={props => {
                 if (this.state.username) {
-                  props.history.push("/");
+                  props.history.push("/admin");
                   return "";
                 }
                 return <LoginScreen
