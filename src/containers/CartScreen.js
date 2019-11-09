@@ -19,6 +19,17 @@ export default class CartScreen extends Component {
         
         var items = JSON.parse(sessionStorage.getItem("items"));
         console.log(items);
+        // let item = [
+        //     {
+        //         name : items.name,
+        //         image : items.image,
+        //         size : items.size,
+        //         quantity : items.quantity,
+        //         price : items.price,
+        //         subTotal : items.subTotal
+        //     }
+        // ];
+        // console.log(item);
         
         return (
             <div>

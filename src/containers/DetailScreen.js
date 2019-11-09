@@ -7,7 +7,7 @@ import axios from "../axios";
 
 export default class DetailScreen extends Component {
     state = {
-        
+        mer : []
     };
 
     componentDidMount() {
@@ -22,17 +22,16 @@ export default class DetailScreen extends Component {
     
     onDetail = (event) => {
         event.preventDefault();
-        
-        let item = {
+        var items = {
             name : this.state.mer.name,
             image : this.state.mer.image,
             size : document.getElementById("size").value,
             quantity : document.getElementById("quantity").value,
             price : this.state.mer.price,
             subTotal : (document.getElementById("quantity").value * this.state.mer.price)
-        }
+        };
         
-        sessionStorage.setItem("items", JSON.stringify(item));
+        sessionStorage.setItem("items", JSON.stringify(items));
 
         this.props.history.push("/cart")
     }

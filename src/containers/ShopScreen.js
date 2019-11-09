@@ -18,9 +18,9 @@ export default class ShopScreen extends Component {
         axios
             .get("/api/merchandise" + this.props.location.search)
             .then(data => {
-                console.log(data.data.data);
+                // console.log(data.data.data);
                 this.setState({ mers: data.data.data });
-                console.log(this.state);
+                // console.log(this.state);
             })
             .catch(error => console.log(error));
     }
