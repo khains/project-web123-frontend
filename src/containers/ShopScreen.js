@@ -11,22 +11,55 @@ import MainContent from "../components/MainContent";
 
 export default class ShopScreen extends Component {
     state = {
-        mers: []
+        mers: [],
+        totalPage : 0,
+        page : 1,
+        pageSize : 12
     };
+    
+    componentWillMount() {
+        
+            axios
+            .get(`/api/page?page=${this.state.page}&pageSize=${this.state.pageSize}`)
+            .then(data => {
+                console.log(data);
+                this.setState({
+                    totalPage : data.data.totalPage,
+                    mers: data.data.data
+                });
+            })
+            .catch(error => console.log(error));
+            
+    }
 
-    componentDidMount() {
+    componentDidMount(){
         axios
             .get("/api/merchandise" + this.props.location.search)
             .then(data => {
                 // console.log(data.data.data);
                 this.setState({ mers: data.data.data });
-                // console.log(this.state);
+                // console.log(this.state.mers);
             })
             .catch(error => console.log(error));
     }
 
-    render() {
+    handlePaginationClick = (event) => {
+        this.setState({page : Number(event.target.innerText)});
+        // const result = Number(event.target.innerText);
+        // console.log(this.state.page);
+        axios
+            .get(`/api/page?page=${event.target.innerText}&pageSize=${this.state.pageSize}`)
+            .then(data => {
+                console.log(data.data);
+                this.setState({mers : data.data.data});
+            })
+    }
 
+    render() {
+        const myArray = [];
+        for(let i = 0; i < this.state.totalPage; i++){
+            myArray.push(i);
+        }
         return (
             <div>
                 <NavBar
@@ -51,7 +84,6 @@ export default class ShopScreen extends Component {
                                 <div id="collapseOne" className={`collapse ${!window.location.search || window.location.search.indexOf('types=') > -1 ? 'show' : ''}`} aria-labelledby="headingOne" data-parent="#accordionExample">
                                     <div class="card-body">
                                         <ul className="list-filter">
-                                            <li><a href="/shop">All</a></li>
                                             <li><a href="/shop?types=Coats and Jackets">Coats and Jackets</a></li>
                                             <li><a href="/shop?types=T-Shirts">T-Shirts</a></li>
                                             <li><a href="/shop?types=Shirts">Shirts</a></li>
@@ -98,13 +130,30 @@ export default class ShopScreen extends Component {
                         <MainContent mer={this.state.mers} />
                     </div>
                     <div className="container text-center col-3">
-                        <ul className="pagination ">
-                            <li class="page-item"><a class="page-link" href="/shop?page=1">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="/shop?page=1">1</a></li>
-                            <li class="page-item"><a class="page-link" href="/shop?page=2">2</a></li>
-                            <li class="page-item"><a class="page-link" href="/shop?page=3">3</a></li>
-                            <li class="page-item"><a class="page-link" href="/shop?page=3">Next</a></li>
-                        </ul>
+                        <nav aria-label="Page navigation example">
+                            <ul className="pagination">
+                                <li className="page-item">
+                                    <a className="page-link"  aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                        <span className="sr-only">Previous</span>
+                                    </a>
+                                </li>
+                                {myArray.map((item) => {
+                                    return (
+                                        <li className={this.state.page === item + 1 ? "page-item active" : "page-item"}>
+                                            <a className="page-link" onClick={this.handlePaginationClick} >{item + 1}</a>
+                                        </li>
+                                    );
+                                })}
+                    
+                                <li className="page-item">
+                                    <a className="page-link"  aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                        <span className="sr-only">Next</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
                 <Footer />

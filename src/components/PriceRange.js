@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import ReactDOM from 'react-dom';
 import InputRange from 'react-input-range';
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 
 import 'react-input-range/lib/css/index.css'
 
@@ -14,7 +14,7 @@ export default class PriceRange extends Component {
         this.state = {
           value4: {
             min: 0,
-            max: 400000,
+            max: 500000,
           },
         };
       }
@@ -31,7 +31,7 @@ export default class PriceRange extends Component {
       render() {
         return (
             <InputRange             
-              maxValue={400000}
+              maxValue={500000}
               minValue={0}
               formatLabel={value => `${value} đ`}
               value={this.state.value4}

@@ -1,5 +1,6 @@
 
 .navbar {
+  size: 10vw;
   background-color:white;
   font-family: unset;
   color: black;
@@ -100,9 +101,10 @@
   }
 
 
-/* .img{
-  height: 350px;
-} */
+.img{
+  height: 20vw;
+  width: 20vw;
+} 
 
 .list-unstyled a{
   color: black;
@@ -172,49 +174,50 @@
 }
 
 .cart-img{
-  width: 100px;
-  height: 100px;
+  width: 10vw;
+  height: 10vw;
 }
 
 .shopping1{
   background-color: rgb(245, 243, 243);
-  height: 580px;
+  height: 50vw;
 }
 .shopping2{
-  margin: 200px 50px 0 50px;
+  margin-top: 15vw;
+  text-align: center;
   font-family: fantasy;
-  font-size: x-large;
+  font-size: 2vw;
 }
 .shopping3{
   font-family: fantasy;
-  font-size: xx-large;
+  font-size: 100%;
 }
 .shopping4{
   font-family: fantasy;
-  font-size: small;
+  font-size: 2vw;
 }
 .imgHome{
-  width: 850px;
-  height: 580px;
+  width: 70vw;
+  height: 50vw;
 }
 .images{
-  width: 420px;
-  height: 550px;
+  width: 31vw;
+  height: 40vw;
 }
-
 .images1{
-  width: 290px;
-  height: 390px;
+  width: 23vw;
+  height: 30vw;
 }
 .textHome{
-  margin: 70px 0 70px 0;
+  text-align: center;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  font-size: 45px;
+  font-size: 3vw;
 }
 .textHome2{
-  margin: 100px 0 30px 0;
+  margin-top: 5vw;
+  text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: 30px;
+  font-size: 3vw;
 }
 .contact{
     background-color: rgb(248, 246, 246);
