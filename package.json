@@ -17,7 +17,7 @@
     "react-paginate": "^6.3.2",
     "react-paypal-button-v2": "^2.5.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0",
+    "react-scripts": "^3.2.0",
     "rimraf": "^3.0.0"
   },
   "scripts": {
