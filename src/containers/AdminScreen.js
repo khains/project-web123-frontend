@@ -39,6 +39,9 @@ export default class AdminScreen extends Component {
                     onLogin={this.props.onLogin}
                 />
                 <div className = "container"> 
+                    <div className="text-center textadmin">
+                        <p>ADD NEW MERCHANDISE</p>   
+                    </div>
                     <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <input id="id"  className="form-control" name="id" type="text" placeholder="id" required/>
